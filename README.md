@@ -1,9 +1,9 @@
 Leaflet.Control.OpaqueLayers
 =============================
 
-Extends Leaflet default control layer by adding a way to adjust opacity of each layer.
+Add opacity control for Leaflet layers.
 
-Check out the [demo] !
+Check out the [demo](http://steph-ben.github.io/leaflet-control-opaquelayers/demo/) !
 
 
 Usage
