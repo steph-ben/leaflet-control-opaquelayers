@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet.Control.OpaqueLayers</title>
+
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet-0.7/leaflet.js"></script>
+
+    <script src="L.Control.OpaqueLayers.js"></script>
+    <style>
+        #map {
+            position: absolute;
+            top:50px;
+            left: 0;
+            right: 0;
+            bottom:0;
+        }
+        .title {
+            font-size: 1.5em;
+            position: absolute;
+            top:0;
+            left: 0;
+            right: 0;
+            height: 30px;
+            background-color: rgba(0,0,0,0.5);
+            color: white;
+            padding: 10px;
+            margin: 0px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <p class="title">L.Control.OpaqueLayers</p>
+    <div id="map"></div>
+
+    <script type="text/javascript">
+
+        var osm = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'Map data &copy; 2013 OpenStreetMap contributors',
+        });
+        var rain = L.tileLayer('http://{s}.tile.openweathermap.org/map/rain/{z}/{x}/{y}.png', {
+                attribution: 'openweathermap.org'
+        });
+        var pressure = L.tileLayer('http://{s}.tile.openweathermap.org/map/pressure/{z}/{x}/{y}.png', {
+                attribution: 'openweathermap.org'
+        });
+        var wind = L.tileLayer('http://{s}.tile.openweathermap.org/map/wind/{z}/{x}/{y}.png', {
+                attribution: 'openweathermap.org'
+        });
+        
+        var baseLayers = {
+            'OpenStreetMap': osm
+        }
+        var overlays = {
+            'Rain': rain,
+            'Sea level pressure': pressure,
+            'Wind': wind
+        };
+     
+        var map = L.map('map', {
+            center: [45, 0],
+            zoom: 5,
+            layers: [osm, rain]
+        });
+        var controlLayer = L.control.opaqueLayers(baseLayers, overlays).addTo(map);
+
+    </script>
+</body>
+</html>
